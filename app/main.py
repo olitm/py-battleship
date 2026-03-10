@@ -42,11 +42,12 @@ class Ship:
         deck = self.get_deck(row, column)
         if deck is None:
             return "Miss!"
-        if not deck.is_alive:
+        elif not deck.is_alive:
             return "Sunk!" if self.is_drowned else "Hit!"
-        deck.is_alive = False
-        self.is_drowned = all(not d.is_alive for d in self.decks)
-        return "Sunk!" if self.is_drowned else "Hit!"
+        else:
+            deck.is_alive = False
+            self.is_drowned = all(not d.is_alive for d in self.decks)
+            return "Sunk!" if self.is_drowned else "Hit!"
 
 
 class Battleship:
